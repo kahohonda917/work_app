@@ -1,23 +1,58 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.css" integrity="sha512-U4eJImzWCUkxYrmi9Skaj6ksVj+JBsLR2CEam6IJEVyKtHUAxOIRSoqgB0xkqKrduL8LTuWEdX8B+zDFPbQHmw==" crossorigin="anonymous" />
+@endsection
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id='calendar'></div>
 </div>
+@endsection
+
+@section('javascript')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                //'dayGridMonth' 'dayGridWeek', 'timeGridDay', 'listWeek'
+
+                events:[
+                    {
+                        id: '1',
+                        title: 'event1',
+                        start: '2021-01-01',
+                        url: '#'
+                    },
+                    {
+                        id: '2',
+                        title: 'event2',
+                        start: '2021-01-05',
+                        url: '#'
+                    },
+                    {
+                        id: '3',
+                        title: 'event3',
+                        start: '2021-01-07',
+                        end: '2021-01-11', // 2021-01-10 23:59:59で終了
+                        url: '#'
+                    },
+                ],
+                eventClick: function(info) {
+                    alert('Event: ' + info.event.title);
+                    alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                    alert('View: ' + info.view.type);
+
+                    // change the border color just for fun
+                    info.el.style.borderColor = 'red';
+                },
+            });
+            calendar.render();
+        });
+
+
+    </script>
 @endsection
