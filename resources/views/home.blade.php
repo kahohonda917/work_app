@@ -14,10 +14,39 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
 
     <script>
+
+            // document.addEventListener('DOMContentLoaded', function() {
+            // var calendarEl = document.getElementById('calendar');
+
+            // var calendar = new FullCalendar.Calendar(calendarEl, {
+            //     selectable: true,
+            //     headerToolbar: {
+            //     left: 'prev,next today',
+            //     center: 'title',
+            //     right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            //     },
+            //     dateClick: function(info) {
+            //     calendar.changeView('dayGridWeek');
+                //alert('clicked ' + info.dateStr);
+                //},
+                //select: function(info) {
+                //right: 'dayGridWeek'
+                // alert('selected ' + info.startStr + ' to ' + info.endStr);
+                // }
+            // });
+
+            // calendar.render();
+            // });
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
+                selectable: true,
+                headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                //initialView: 'dayGridMonth',
                 //'dayGridMonth' 'dayGridWeek', 'timeGridDay', 'listWeek'
 
                 events:[
@@ -49,7 +78,17 @@
                     // change the border color just for fun
                     info.el.style.borderColor = 'red';
                 },
+                dateClick: function(info) {
+                    //クリックした日付が取れるよ
+                    calendar.changeView('dayGridWeek');
+                    alert('clicked ' + info.dateStr);
+                }
+                
             });
+
+
+
+            
             calendar.render();
         });
 
