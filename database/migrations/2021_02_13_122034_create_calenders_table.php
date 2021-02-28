@@ -18,10 +18,10 @@ class CreateCalendersTable extends Migration
             $table->integer('user_id');
             $table->dateTime('start_time_plan');
             $table->dateTime('end_time_plan');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
-            $table->dateTime('break_time_start');
-            $table->dateTime('break_time_end');
+            $table->dateTime('start_time')->nullable();
+            $table->dateTime('end_time')->nullable();
+            $table->dateTime('break_time_start')->nullable();
+            $table->dateTime('break_time_end')->nullable();
             $table->timestamps();
             $table->foreign('user_id')
                     ->references('id')

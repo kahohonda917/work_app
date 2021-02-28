@@ -7,6 +7,89 @@
 <div class="container">
     <div id='calendar'></div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST">
+                @csrf
+            <div class="modal-body">
+                <div class="row">
+                    <input type="hidden" name="date" id="date">
+                    <label>開始時間</label>
+                    <select name="start_hour">
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                    時
+                    <select name="start_minute">
+                        <option value="0">00</option>
+                        <option value="30">30</option>
+                    </select>
+                    分
+                </div>
+
+                <div class="row">
+                    <label>終了</label>
+                    <select name="end_hour">
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                    時
+                    <select name="end_minute">
+                        <option value="0">00</option>
+                        <option value="30">30</option>
+                    </select>
+                    分
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <button type="submit" class="btn btn-primary">登録</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('javascript')
@@ -15,28 +98,6 @@
 
     <script>
 
-            // document.addEventListener('DOMContentLoaded', function() {
-            // var calendarEl = document.getElementById('calendar');
-
-            // var calendar = new FullCalendar.Calendar(calendarEl, {
-            //     selectable: true,
-            //     headerToolbar: {
-            //     left: 'prev,next today',
-            //     center: 'title',
-            //     right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            //     },
-            //     dateClick: function(info) {
-            //     calendar.changeView('dayGridWeek');
-                //alert('clicked ' + info.dateStr);
-                //},
-                //select: function(info) {
-                //right: 'dayGridWeek'
-                // alert('selected ' + info.startStr + ' to ' + info.endStr);
-                // }
-            // });
-
-            // calendar.render();
-            // });
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -50,25 +111,15 @@
                 //'dayGridMonth' 'dayGridWeek', 'timeGridDay', 'listWeek'
 
                 events:[
-                    {
-                        id: '1',
-                        title: 'event1',
-                        start: '2021-01-01',
-                        url: '#'
-                    },
-                    {
-                        id: '2',
-                        title: 'event2',
-                        start: '2021-01-05',
-                        url: '#'
-                    },
-                    {
-                        id: '3',
-                        title: 'event3',
-                        start: '2021-01-07',
-                        end: '2021-01-11', // 2021-01-10 23:59:59で終了
-                        url: '#'
-                    },
+                        @foreach($calender as $element)
+                        {
+                            id: '{{$element->id}}',
+                            title: '{{$element->user_id}}',
+                            start: '{{$element->start_time_plan}}',
+                            end: '{{$element->end_time_plan}}',
+                            url: '#'
+                        },
+                        @endforeach
                 ],
                 eventClick: function(info) {
                     alert('Event: ' + info.event.title);
@@ -80,15 +131,12 @@
                 },
                 dateClick: function(info) {
                     //クリックした日付が取れるよ
-                    calendar.changeView('dayGridWeek');
-                    alert('clicked ' + info.dateStr);
+                    $("#date").val(info.dateStr);
+                    $("#exampleModalLabel").text(info.dateStr);
+                    $('#registerModal').modal('show');
                 }
-                
+
             });
-
-
-
-            
             calendar.render();
         });
 

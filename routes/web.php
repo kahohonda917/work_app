@@ -18,8 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@calender_register')->name('calender_register');
+
+
+
+
+
 Route::get('/calender', 'HomeController@calender')->name('calender');
-Route::post('/calender/{id}', 'HomeController@calender_register')->name('calender_register');
 Route::put('/calender/{id}', 'HomeController@calender_edit')->name('calender_edit');
 Route::delete('/calender/{id}', 'HomeController@calender_delete')->name('calender_delete');
 Route::get('/customer', 'HomeController@customer')->name('customer');
