@@ -19,13 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@calender_register')->name('calender_register');
+//Route::get('/home', 'HomeController@calender_edit')->name('calender_edit');
 
 
 
 
 
 Route::get('/calender', 'HomeController@calender')->name('calender');
-Route::put('/calender/{id}', 'HomeController@calender_edit')->name('calender_edit');
+//Route::put('/calender/{id}', 'HomeController@calender_edit')->name('calender_edit');
 Route::delete('/calender/{id}', 'HomeController@calender_delete')->name('calender_delete');
 Route::get('/customer', 'HomeController@customer')->name('customer');
 Route::post('/customer/{id}', 'HomeController@customer_register')->name('customer_register');

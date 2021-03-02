@@ -47,15 +47,17 @@ class HomeController extends Controller
     }
 
 
+
+
     public function calender()
     {
         return view('calender');
     }
 
-    public function calender_edit($id)
-    {
-        return view('calender');
-    }
+    // public function calender_edit($id)
+    // {
+    //     return view('calender');
+    // }
     public function calender_delete($id)
     {
         return view('calender');
