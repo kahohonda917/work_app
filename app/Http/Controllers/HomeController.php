@@ -54,13 +54,27 @@ class HomeController extends Controller
         return view('calender');
     }
 
-    // public function calender_edit($id)
-    // {
-    //     return view('calender');
-    // }
+    public function calender_edit(Request $request, $id)
+    {
+        $Calender = Calender::find($id);
+        $start_hour=$request->request->get("start_hour");
+        $start_minute=$request->request->get("start_minute");
+        $end_hour=$request->request->get("end_hour");
+        $end_minute=$request->request->get("end_minute");
+        $date=$request->request->get("date");
+        $Calender->user_id=Auth::id();
+        $Calender->start_time_plan=Carbon::parse($date.' '.$start_hour.':'.$start_minute);
+        $Calender->end_time_plan=Carbon::parse($date.' '.$end_hour.':'.$end_minute);
+        $Calender->save();
+
+        return redirect()->route("home");
+
+    }
     public function calender_delete($id)
     {
-        return view('calender');
+        $Calender = Calender::find($id);
+        $Calender->delete();
+        return redirect()->route("home");
     }
 
     public function customer()

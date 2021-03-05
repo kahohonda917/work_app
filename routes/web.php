@@ -20,7 +20,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@calender_register')->name('calender_register');
-//Route::get('/home', 'HomeController@calender_edit')->name('calender_edit');
+Route::get('/delete/{id}', 'HomeController@calender_delete')->name('calender_delete');
+Route::post('/edit/{id}', 'HomeController@calender_edit')->name('calender_edit');
 
 
 
@@ -28,7 +29,7 @@ Route::post('/home', 'HomeController@calender_register')->name('calender_registe
 
 Route::get('/calender', 'HomeController@calender')->name('calender');
 //Route::put('/calender/{id}', 'HomeController@calender_edit')->name('calender_edit');
-Route::delete('/calender/{id}', 'HomeController@calender_delete')->name('calender_delete');
+//Route::delete('/calender/{id}', 'HomeController@calender_delete')->name('calender_delete');
 Route::get('/customer', 'HomeController@customer')->name('customer');
 Route::post('/customer/{id}', 'HomeController@customer_register')->name('customer_register');
 Route::put('/customer/{id}', 'HomeController@customer_edit')->name('customer_edit');
