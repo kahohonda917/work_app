@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet"> -->
-    
+
 
     <!-- Styles -->
     <!--  date picker -->
@@ -97,7 +97,6 @@
         <main>
             @yield('content')
         </main>
-    </div>
     <footer class="footer">
     <div class="container">
         <div>
@@ -105,6 +104,8 @@
         </div>
     </div>
     </footer>
+    </div>
+
     @yield('javascript')
     </body>
 </html>
