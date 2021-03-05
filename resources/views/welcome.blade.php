@@ -1,6 +1,21 @@
 @extends('layouts.app')
+@section('css')
+<style type="text/css">
+    .jumbotron{
+        border: solid 10px white;
+        background-color:#D09683;
+        color:#2D4262;
+    }
+    .about{
+        background-color:#73605B;
+        color:white;
+    }
+
+</style>
+@endsection
 @section('content')
     <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">　シフトカレンダー</h1>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active text-center">
@@ -25,7 +40,7 @@
     </div>
     <div class="container">
     <div class="row" >
-    <div class="col-6">
+    <div class="about col-6">
     <br>
     爽快にストレス解消できる会員制フィットネスクラブ<br>
     最寄駅：水道橋駅、後楽園駅。<br>

@@ -1,12 +1,30 @@
 @extends('layouts.app')
+@section('css')
+    <style type="text/css">
+        .card{
+            border:10px solid #2D4262;
+            border-radius: 30px 0px 30px 0px;
+        }
+        .card-header{
+            color:white;
+            background-color: #2D4262;
+        }
+        .card-header:first-child{
+            border-radius: 0px;
+        }
+        .btn-primary{
+            background-color: #2D4262;
+            width:100px
+        }
+    </style>
+@endsection
 
 @section('content')
-<div class="container">
+<div style="margin:100px"  class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('新規登録') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -62,7 +80,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('登録') }}
                                 </button>

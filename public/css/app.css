@@ -80,7 +80,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: white;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -4879,18 +4879,22 @@ input[type=button].btn-block {
 .navbar-expand .navbar-toggler {
   display: none;
 }
+.navbar-light{
+    background-color:#363237;
+    color:white;
+}
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -5055,9 +5059,6 @@ input[type=button].btn-block {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-header:first-child {
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-}
 
 .card-footer {
   padding: 0.75rem 1.25rem;
@@ -10962,12 +10963,11 @@ a.text-dark:focus {
   }
 
   .footer {
-    position: absolute;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 60px;
-    margin: auto;
-    color: #c0c0c0;
-    background-color: #f5f5f5;
+    margin-top:10px;
+    color: white;
+    background-color: #2D4262;
   }
