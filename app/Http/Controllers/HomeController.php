@@ -62,9 +62,17 @@ class HomeController extends Controller
         $end_hour=$request->request->get("end_hour");
         $end_minute=$request->request->get("end_minute");
         $date=$request->request->get("edit_date");
+
         $Calender->user_id=Auth::id();
-        $Calender->start_time_plan=Carbon::parse($date.' '.$start_hour.':'.$start_minute);
-        $Calender->end_time_plan=Carbon::parse($date.' '.$end_hour.':'.$end_minute);
+        if(isset($start_hour)){
+            $Calender->start_time_plan=Carbon::parse($date.' '.$start_hour.':'.$start_minute);
+            $Calender->end_time_plan=Carbon::parse($date.' '.$end_hour.':'.$end_minute);
+        }elseif($Calender->start_time==null){
+            $Calender->start_time=new Carbon();
+        }else{
+            $Calender->end_time=new Carbon();
+        }
+
         $Calender->save();
 
         return redirect()->route("home");
