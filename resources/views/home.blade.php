@@ -95,7 +95,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="editModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -104,7 +104,7 @@
                 @csrf
             <div class="modal-body">
                 <div class="row">
-                    <input type="hidden" name="date" id="date">
+                    <input type="hidden" name="edit_date" id="edit_date">
                     <label>開始時間</label>
                     <select name="start_hour" id="start_hour">
                         <option value="6">6</option>
@@ -136,7 +136,7 @@
 
                 <div class="row">
                     <label>終了時間</label>
-                    <select name="end_hour">
+                    <select name="end_hour" id="end_hour">
                         <option value="6">6</option>
                         <option value="7">7</option>
                         <option value="8">8</option>
@@ -157,7 +157,7 @@
                         <option value="23">23</option>
                     </select>
                     時
-                    <select name="end_minute">
+                    <select name="end_minute" id="end_minute">
                         <option value="0">00</option>
                         <option value="30">30</option>
                     </select>
@@ -191,6 +191,7 @@
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
+                //'dayGridMonth,timeGridWeek,timeGridDay'
                 //initialView: 'dayGridMonth',
                 //'dayGridMonth' 'dayGridWeek', 'timeGridDay', 'listWeek'
 
@@ -201,21 +202,41 @@
                             title: '{{$element->user_id}}',
                             start: '{{$element->start_time_plan}}',
                             end: '{{$element->end_time_plan}}',
-                            url: '#'
+                            url: '#',
+                            //backgroundColor: '#D09683'
                         },
                         @endforeach
                 ],
+                // buttonText: {
+                //     today:    '今日',
+                //     month:    '月',
+                //     week:     '週',
+                //     day:      '日'
+                // },
+                // monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                // monthNamesShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                // dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
                 eventClick: function(info) {
                     // alert('Event: ' + info.event.title);
                     // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
                     // alert('View: ' + info.view.type);
                     //console.log(info.event.id);
+                    //$("#edit_date").val(info.event.start.getFullYear() + "-" + getMonth()+1);
+                    if({{Auth::id()}}==info.event.title){
                     $('#editModal').modal('show');
+                    console.log({{Auth::id()}});
+
+                    $("#edit_date").val(info.event.start.getFullYear()+ "-" + (info.event.start.getMonth()+1) + "-" + info.event.start.getDate());
+                    $("#editModalLabel").text(info.event.start.getFullYear()+ "-" + (info.event.start.getMonth()+1) + "-" + info.event.start.getDate());
+                    
                     $('#delete').attr('href','delete/'+info.event.id);
                     $('#edit-form').attr('action','edit/'+info.event.id);
-                    console.log(info.event.start.getHours());
+                    console.log(info.event.start.getFullYear());
                     $('#start_hour').val(info.event.start.getHours());
-                    $('#start_minute').val(info.event.start.getHours());
+                    $('#start_minute').val(info.event.start.getMinutes());
+                    $('#end_hour').val(info.event.end.getHours());
+                    $('#end_minute').val(info.event.end.getMinutes());
+                    }
                     
 
 

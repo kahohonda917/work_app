@@ -61,7 +61,7 @@ class HomeController extends Controller
         $start_minute=$request->request->get("start_minute");
         $end_hour=$request->request->get("end_hour");
         $end_minute=$request->request->get("end_minute");
-        $date=$request->request->get("date");
+        $date=$request->request->get("edit_date");
         $Calender->user_id=Auth::id();
         $Calender->start_time_plan=Carbon::parse($date.' '.$start_hour.':'.$start_minute);
         $Calender->end_time_plan=Carbon::parse($date.' '.$end_hour.':'.$end_minute);

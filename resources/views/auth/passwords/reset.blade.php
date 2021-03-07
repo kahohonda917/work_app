@@ -1,10 +1,29 @@
 @extends('layouts.app')
+@section('css')
+    <style type="text/css">
+        .card{
+            border:10px solid #2D4262;
+            border-radius: 30px 0px 30px 0px;
+        }
+        .card-header{
+            color:white;
+            background-color: #2D4262;
+        }
+        .card-header:first-child{
+            border-radius: 0px;
+        }
+        .btn-primary{
+            background-color: #2D4262;
+            width:100px
+        }
+    </style>
+@endsection
 
 @section('content')
-<div class="container">
+<div  class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="margin:100px auto">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">

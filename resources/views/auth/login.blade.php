@@ -1,7 +1,26 @@
 @extends('layouts.app')
+@section('css')
+    <style type="text/css">
+        .card{
+            border:10px solid #2D4262;
+            border-radius: 30px 0px 30px 0px;
+        }
+        .card-header{
+            color:white;
+            background-color: #2D4262;
+        }
+        .card-header:first-child{
+            border-radius: 0px;
+        }
+        .btn-primary{
+            background-color: #2D4262;
+            width:100px
+        }
+    </style>
+@endsection
 
 @section('content')
-<div style="margin-top:100px" class="container">
+<div style="margin:100px auto"  class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
