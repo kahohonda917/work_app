@@ -6,6 +6,8 @@ use App\Calender;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Chat;
 
 class HomeController extends Controller
 {
@@ -84,6 +86,20 @@ class HomeController extends Controller
         $Calender->delete();
         return redirect()->route("home");
     }
+
+    public function chat($customer_id){
+        $customer=Auth::user();
+        $user=User::find($customer_id);
+        $messages=Chat::where("from_user_id",$customer->id)
+                ->where("to_user_id",$user->id)
+                ->get();
+        return view('chat',compact($messages));
+    }
+
+
+
+
+
 
     public function customer()
     {

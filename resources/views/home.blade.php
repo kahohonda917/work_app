@@ -100,6 +100,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <div id="result">
+                <video></video>
+            </div>
+            <p id="latitude"></p>
+            <p id="longitude"></p>
             <form method="POST" id="edit-form">
                 @csrf
             <div class="modal-body">
@@ -153,6 +158,7 @@
 @endsection
 
 @section('javascript')
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
 
@@ -167,15 +173,11 @@
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
-                //'dayGridMonth,timeGridWeek,timeGridDay'
-                //initialView: 'dayGridMonth',
-                //'dayGridMonth' 'dayGridWeek', 'timeGridDay', 'listWeek'
-
                 events:[
                         @foreach($calender as $element)
                         {
                             id: '{{$element->id}}',
-                            title: '{{$element->user_id}}',
+                            title: '{{$element->User()->first()->name}}',
                             start: '{{$element->start_time_plan}}',
                             end: '{{$element->end_time_plan}}',
                             url: '#',
@@ -183,8 +185,6 @@
                         },
                         @endforeach
                 ],
-
-
 
                 // buttonText: {
                 //     today:    '今日',
@@ -201,7 +201,13 @@
                     // alert('View: ' + info.view.type);
                     //console.log(info.event.id);
                     //$("#edit_date").val(info.event.start.getFullYear() + "-" + getMonth()+1);
-                    if({{Auth::id()}}==info.event.title){
+                    navigator.geolocation.getCurrentPosition(
+                        function(pos){
+                            $("#latitude").text("緯度は"+pos.coords.latitude);
+                            $("#longitude").text("経度は"+pos.coords.longitude);
+
+                        });
+                    if('{{Auth::user()->name}}'==info.event.title){
                     $('#editModal').modal('show');
                     console.log(info.event);
                     $("#edit_date").val(info.event.start.getFullYear()+ "-" + (info.event.start.getMonth()+1) + "-" + info.event.start.getDate());
@@ -263,7 +269,30 @@
             calendar.render();
         });
 
+        const constraints = { audio: false, video: { facingMode: 'environment', width: 500, height: 500 }};
 
+        navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+            const video = document.querySelector('video');
+            video.srcObject = stream;
+            video.play();
 
+            const w = constraints.video.width, h = constraints.video.height;
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const context = canvas.getContext('2d');
+
+            const timer = setInterval(() => {
+                context.drawImage(video, 0, 0, w, h);
+                const imageData = context.getImageData(0, 0, w, h);
+                const code = jsQR(imageData.data, imageData.width, imageData.height);
+                if (code) {
+                    clearInterval(timer);
+                    document.querySelector('#result').textContent = code.data;
+                }
+            }, 500);
+        }).catch((e) => {
+            console.log('load error', e);
+        });
     </script>
 @endsection

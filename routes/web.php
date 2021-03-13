@@ -23,6 +23,7 @@ Route::post('/home', 'HomeController@calender_register')->name('calender_registe
 Route::get('/delete/{id}', 'HomeController@calender_delete')->name('calender_delete');
 Route::post('/edit/{id}', 'HomeController@calender_edit')->name('calender_edit');
 
+Route::get('/chat/{customer_id}', 'HomeController@chat')->name('chat');
 
 
 
