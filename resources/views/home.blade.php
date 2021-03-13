@@ -136,6 +136,9 @@
                     </div>
                 </div>
                 <input type="hidden" name="now" id="now">
+                <label>打刻</label>
+                <button type="submit" class="btn btn-outline-secondary"id="start_now">出勤</button>
+                <button type="submit" class="btn btn-outline-secondary" id="end_now">退勤</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
@@ -217,7 +220,7 @@
                         $("#start_minute").attr("disabled", "disabled");
                         $("#end_hour").attr("disabled", "disabled");
                         $("#end_minute").attr("disabled", "disabled");
-                        $("#submit").text("打刻");
+                        //$("#submit").text("打刻");
                         $("#delete").css("display","None")
                     }else{
 

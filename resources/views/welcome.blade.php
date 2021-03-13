@@ -15,7 +15,7 @@
 @endsection
 @section('content')
     <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4">　シフトカレンダー</h1>
+        <!-- <h1 class="display-4">　シフトカレンダー</h1> -->
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active text-center">

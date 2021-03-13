@@ -9,9 +9,9 @@
 
  @font-face {
   font-family: "MyFont";
-  src: url("../font/NikkyouSans-mLKax-Logo-Rounded.ttf");
+  src: url("../font/Corporate-Logo-Rounded.ttf");
 }
-
+/* "../font/NikkyouSans-mLKax-Logo-Rounded.ttf" */
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
