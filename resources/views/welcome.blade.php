@@ -3,17 +3,22 @@
 <style type="text/css">
     .jumbotron{
         border: solid 10px white;
-        background-color:#D09683;
-        color:#2D4262;
+        /* background-color:#D09683; */
+        /* color:#2D4262; */
     }
     .about{
         background-color:#73605B;
         color:white;
     }
+    /* .welcome_container{
+        background-color:#D09683;
+    
+    } */
 
 </style>
 @endsection
 @section('content')
+<div class="welcome_container">
     <div class="jumbotron jumbotron-fluid">
         <!-- <h1 class="display-4">　シフトカレンダー</h1> -->
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -51,6 +56,7 @@
     </div>
     <div class="col-6">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.7750553856513!2d139.75079221520113!3d35.70715273615745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c38bbf0efcd%3A0x19a5d8e06832fe53!2z44OV44Kj44OD44OI44ON44K544Kv44Op44OW5p2x5Lqs44OJ44O844Og!5e0!3m2!1sja!2sjp!4v1614687183741!5m2!1sja!2sjp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
     </div>
     </div>
     </div>

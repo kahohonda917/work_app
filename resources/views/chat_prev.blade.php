@@ -117,9 +117,9 @@
         width: 100%;
     }
 
-    .type_msg {border-top: 1px solid #c4c4c4;border-bottom: 1px solid #c4c4c4;position: relative;}
+    .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
     .msg_send_btn {
-        background: #73605B none repeat scroll 0 0;
+        background: #05728f none repeat scroll 0 0;
         border: medium none;
         border-radius: 50%;
         color: #fff;
@@ -180,59 +180,9 @@
                 
                 <div class="mesgs">
                     <div class="msg_history">
-                    @foreach($messages as $key => $message)
-                    <!-- 送信したメッセージ -->
-                    @if($message->from_user_id == \Illuminate\Support\Facades\Auth::id())
-                    <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{{ $message -> message }}</p>
-                                <span class="time_date"> {{ $message -> created_at }}</span> </div>
-                        </div>
-                    @endif
-                    <!-- 受信したメッセージ -->
-                    @if($message->to_user_id == \Illuminate\Support\Facades\Auth::id())
-                    <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{{ $message -> message }}</p>
-                                    <span class="time_date"> {{ $message -> created_at }}</span></div>
-                            </div>
-                    @endif
-                    @endforeach
-
-
-
-
-                    <!-- @foreach($kochas as $kocha)
-                    <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{{ $kocha -> message }}</p>
-                                    <span class="time_date"> {{ $kocha -> created_at }}</span></div>
-                            </div>
-
                     
-                    @endforeach
-
-                    @foreach($sentkochas as $sentkocha)
-                    <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{{ $sentkocha -> message }}</p>
-                                <span class="time_date"> {{ $sentkocha -> created_at }}</span> </div>
-                        </div>
-                    @endforeach -->
-
-                    <div class="type_msg">
-                        <div class="input_msg_write">
-                        <form method="GET">
-                            <input type="text" class="write_msg" placeholder="{{ $user_t -> name}}" name="message"/>
-                            
-                            <button class="msg_send_btn" type="submit">⇧<i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                        </form>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </div>
 

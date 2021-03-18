@@ -86,14 +86,74 @@ class HomeController extends Controller
         $Calender->delete();
         return redirect()->route("home");
     }
+    public function chat_prev(){
 
-    public function chat($customer_id){
-        $customer=Auth::user();
-        $user=User::find($customer_id);
-        $messages=Chat::where("from_user_id",$customer->id)
-                ->where("to_user_id",$user->id)
+        $customer=Auth::user();//自分
+
+    
+        $users = User::where('id' ,'<>' , $customer->id)->get();
+        // $messages=Chat::where("to_user_id",$customer->id)
+        //         //->where("from_user_id",$user->id)
+        //         ->get();
+        
+        return view('chat_prev', [
+            "users" => $users
+        ]);
+        //return view('chat',compact($messages));
+    }
+
+    public function chat(Request $request, $customer_id){
+
+        $login=Auth::user();//自分
+        $loginId=Auth::id();
+        $customer=User::find($customer_id);//相手
+
+        $Chat = new Chat();
+        $new_message=$request->request->get("message");
+        if(isset($new_message)){
+            $Chat->message=$new_message;
+            $Chat->to_user_id=$customer->id;
+            $Chat->from_user_id=$login->id;
+            $Chat->save();
+        }
+
+        $users = User::where('id' ,'<>' , $login->id)->get();
+
+        $param = [
+            'send' => $loginId,
+            'receive' => $customer_id,
+        ];
+
+        $query=Chat::where("to_user_id",$login->id)
+                ->where("from_user_id",$customer->id);
+        $query->orWhere(function($query) use($loginId , $customer_id){
+                    $query->where('to_user_id' , $customer_id);
+                    $query->where('from_user_id' , $loginId);
+         
+                });
+        $messages = $query->get();
+
+        $kochas=Chat::where("to_user_id",$login->id)
+                ->where("from_user_id",$customer->id)
                 ->get();
-        return view('chat',compact($messages));
+        $sentkochas=Chat::where("from_user_id",$login->id)
+                ->where("to_user_id",$customer->id)
+                ->get();
+
+        
+
+        //dd($kochas);
+        //dd($sentkochas);
+        //dd($messages);
+        return view('chat', [
+            "param" => $param,
+            "messages" => $messages,
+            "users" => $users,
+            "kochas" => $kochas,
+            "sentkochas" => $sentkochas ,
+            "user_t" => $customer
+        ]);
+        //return view('chat',compact($messages));
     }
 
 
