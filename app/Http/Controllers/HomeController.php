@@ -102,20 +102,26 @@ class HomeController extends Controller
         //return view('chat',compact($messages));
     }
 
-    public function chat(Request $request, $customer_id){
+    public function chat_add(Request $request, $customer_id){
+        $login=Auth::user();
+        $Chat = new Chat();
+        $new_message=$request->request->get("message");
+        if(isset($new_message)){
+            $Chat->message=$new_message;
+            $Chat->to_user_id=$customer_id;
+            $Chat->from_user_id=$login->id;
+            $Chat->save();
+        }
+        return redirect()->route("chat" , $customer_id);
+    }
+
+    public function chat($customer_id){
 
         $login=Auth::user();//自分
         $loginId=Auth::id();
         $customer=User::find($customer_id);//相手
 
-        $Chat = new Chat();
-        $new_message=$request->request->get("message");
-        if(isset($new_message)){
-            $Chat->message=$new_message;
-            $Chat->to_user_id=$customer->id;
-            $Chat->from_user_id=$login->id;
-            $Chat->save();
-        }
+        
 
         $users = User::where('id' ,'<>' , $login->id)->get();
 
@@ -154,6 +160,24 @@ class HomeController extends Controller
             "user_t" => $customer
         ]);
         //return view('chat',compact($messages));
+    }
+
+    public function search(Request $request){
+        $search_name = $request->search_name;
+        if ($search_name != '') {
+            //$results = User::where('name', $search_name)->get();
+            // ->orderBy('created_at','desc');
+            $results = User::where('name','like','%'.$search_name.'%')
+                ->orderBy('created_at','desc')
+                ->get();
+            //dd($results);
+          }else{
+            $results = User::orderBy('created_at','desc')
+                ->get();
+          }
+          return view('search', [
+              "results" => $results
+          ]);
     }
 
 

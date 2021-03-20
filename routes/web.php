@@ -25,6 +25,9 @@ Route::post('/edit/{id}', 'HomeController@calender_edit')->name('calender_edit')
 
 Route::get('/chat', 'HomeController@chat_prev')->name('chat_prev');
 Route::get('/chat/{customer_id}', 'HomeController@chat')->name('chat');
+Route::post('/chat/{customer_id}', 'HomeController@chat_add')->name('chat_add');
+
+Route::post('/search', 'HomeController@search')->name('search');
 
 
 

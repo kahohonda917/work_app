@@ -117,9 +117,9 @@
         width: 100%;
     }
 
-    .type_msg {border-top: 1px solid #c4c4c4;border-bottom: 1px solid #c4c4c4;position: relative;}
+    .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
     .msg_send_btn {
-        background: #73605B none repeat scroll 0 0;
+        background: #05728f none repeat scroll 0 0;
         border: medium none;
         border-radius: 50%;
         color: #fff;
@@ -136,33 +136,7 @@
         height: 516px;
         overflow-y: auto;
     }
-
 </style>
-@endsection
-
-@section('javascript')
-
-<!-- <script>
-
-    // function scrollLinkTest01() {
-    //     var divElement = document.getElementById( "scroll-inner" );
-    //     var height = divElement.clientHeight;
-    //     console.log(height);
-    //     divElement.scrollTop(height);
-    // }
-
-        var divElement = document.getElementById( "scroll-inner" ) ;
-        var height = divElement.clientHeight;
-        divElement.scrollTop = divElement.scrollHeight;;
-        console.log(divElement.scrollTop);
-
-    // console.log(height);
-    // scrollHeight = divElement.scrollTop;
-    // divElement.scrollTop = height;
-    // console.log(divElement.scrollTop);
-    
-
-</script> -->
 @endsection
 
 @section('content')
@@ -175,7 +149,7 @@
                         <div class="recent_heading">
                             <h4>User</h4>
                         </div>
-                <form action="/search" method="post">
+                        <form action="/search" method="post">
                         @csrf 
                         <div class="srch_bar">
                             <div class="stylish-input-group">
@@ -185,21 +159,21 @@
                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i> </button>
                     <!-- <button type="submit">検索</button> -->
                 
-                </span> </div>
+                    </span> </div>
                         </div>
-                </form>
+                    </form>
                     </div>
                     <div class="inbox_chat">
                     
                         
-                            @foreach($users as $user)
+                            @foreach($results as $result)
                             <div class="chat_list">
                             <div class="chat_people">
-                                <div class="chat_img"> <img src="{{asset('img/sheep2.png')}}" alt="sunil"> </div>
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                                 <div class="chat_ib">
-                                    <h5>{{ $user -> name }}</h5>
+                                    <h5>{{ $result -> name }}</h5>
                                     
-                                        <a href="/chat/{{$user->id}}"><input type="button" class="btn btn-primary" value="Chat"></a>
+                                        <a href="/chat/{{$result->id}}"><button type="button" class="btn btn-primary">Chat</button></a>
                                 </div>
                             </div>
                             </div>
@@ -210,64 +184,16 @@
                     </div>
                 </div>
                 
-                <div class="mesgs" >
-                    <div class="msg_history" id="scroll-inner">
-                    <a href="#msg_send_btn">下へ</a>
-                    @foreach($messages as $key => $message)
-                    <!-- 送信したメッセージ -->
-                    @if($message->from_user_id == \Illuminate\Support\Facades\Auth::id())
-                    <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{{ $message -> message }}</p>
-                                <span class="time_date"> {{ $message -> created_at }}</span> </div>
-                        </div>
-                    @endif
-                    <!-- 受信したメッセージ -->
-                    @if($message->to_user_id == \Illuminate\Support\Facades\Auth::id())
-                    <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{{ $message -> message }}</p>
-                                    <span class="time_date"> {{ $message -> created_at }}</span></div>
-                            </div>
-                    @endif
-                    @endforeach
-
-
-
-
-                    <!-- @foreach($kochas as $kocha)
-                    <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{{ $kocha -> message }}</p>
-                                    <span class="time_date"> {{ $kocha -> created_at }}</span></div>
-                            </div>
-
+                <div class="mesgs">
+                    <div class="msg_history">
                     
-                    @endforeach
-
-                    @foreach($sentkochas as $sentkocha)
-                    <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{{ $sentkocha -> message }}</p>
-                                <span class="time_date"> {{ $sentkocha -> created_at }}</span> </div>
-                        </div>
-                    @endforeach -->
-
-                    <div class="type_msg">
-                        <div class="input_msg_write">
-                        <form method="POST">
-                            @csrf 
-                            <input type="text" class="write_msg" placeholder="{{ $user_t -> name}}" name="message"/>
-                            
-                            <a href="#msg_send_btn"><button class="msg_send_btn" type="submit" id="msg_send_btn">⇧<i class="fa fa-paper-plane-o" aria-hidden="true"></i></button></a>
-                        </form>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </div>
+
+@endsection
+
+@section('javascript')
 
 @endsection
