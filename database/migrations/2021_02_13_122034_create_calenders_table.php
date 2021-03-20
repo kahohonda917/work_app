@@ -15,7 +15,7 @@ class CreateCalendersTable extends Migration
     {
         Schema::create('calenders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->bigInteger('user_id');
             $table->dateTime('start_time_plan');
             $table->dateTime('end_time_plan');
             $table->dateTime('start_time')->nullable();
