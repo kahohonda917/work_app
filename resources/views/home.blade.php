@@ -100,11 +100,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="result">
+            <!-- <div id="result">
                 <video></video>
             </div>
             <p id="latitude"></p>
-            <p id="longitude"></p>
+            <p id="longitude"></p> -->
             <form method="POST" id="edit-form">
                 @csrf
             <div class="modal-body">
@@ -202,12 +202,12 @@
                     // alert('View: ' + info.view.type);
                     //console.log(info.event.id);
                     //$("#edit_date").val(info.event.start.getFullYear() + "-" + getMonth()+1);
-                    navigator.geolocation.getCurrentPosition(
-                        function(pos){
-                            $("#latitude").text("緯度は"+pos.coords.latitude);
-                            $("#longitude").text("経度は"+pos.coords.longitude);
+                    // navigator.geolocation.getCurrentPosition(
+                    //     function(pos){
+                    //         $("#latitude").text("緯度は"+pos.coords.latitude);
+                    //         $("#longitude").text("経度は"+pos.coords.longitude);
 
-                        });
+                    //     });
                     if('{{Auth::user()->name}}'==info.event.title){
                     $('#editModal').modal('show');
                     console.log(info.event);
