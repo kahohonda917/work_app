@@ -225,7 +225,7 @@
                     <!-- 受信したメッセージ -->
                     @if($message->to_user_id == \Illuminate\Support\Facades\Auth::id())
                     <div class="incoming_msg">
-                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                            <div class="incoming_msg_img"> <img src="{{asset('img/sheep2.png')}}" alt="sunil"> </div>
                             <div class="received_msg">
                                 <div class="received_withd_msg">
                                     <p>{{ $message -> message }}</p>
