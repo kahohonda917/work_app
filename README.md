@@ -18,7 +18,7 @@
 - Heroku
 
 # Usage
-- https://shiftapp2021.herokuapp.com/にアクセス
+- https://shiftapp2021.herokuapp.com/ にアクセス
 - デモユーザでログイン
     - Mail : kaho1933@gmail.com
     - Password : password
