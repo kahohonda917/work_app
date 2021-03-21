@@ -4,7 +4,9 @@
 
 # DEMO
 カレンダーのページでは、このようにシフトを記入できます。
-<img width="1439" alt="スクリーンショット 2021-03-21 13 28 26" src="https://user-images.githubusercontent.com/54792380/111894037-c1e2a080-8a4a-11eb-8409-a64227fc4c59.png">
+<img width="600" alt="スクリーンショット 2021-03-21 13 28 26" src="https://user-images.githubusercontent.com/54792380/111894037-c1e2a080-8a4a-11eb-8409-a64227fc4c59.png">
+チャットのページです。
+<img width="600" alt="スクリーンショット 2021-03-21 13 40 56" src="https://user-images.githubusercontent.com/54792380/111894078-2ef63600-8a4b-11eb-8305-57ec2ac4780d.png">
 
 # Features
 メイン機能はシフトをカレンダーに記入すること、出勤退勤の打刻です。
