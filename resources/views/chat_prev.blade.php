@@ -169,7 +169,7 @@
                             @foreach($users as $user)
                             <div class="chat_list">
                             <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_img"> <img src="{{asset('img/sheep2.png')}}" alt="sunil"> </div>
                                 <div class="chat_ib">
                                     <h5>{{ $user -> name }}</h5>
                                     
