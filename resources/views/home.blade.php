@@ -270,7 +270,7 @@
             calendar.render();
         });
 
-        const constraints = { audio: false, video: { facingMode: 'environment', width: 100, height: 100 }};
+        const constraints = { audio: false, video: { facingMode: 'environment', width: 150, height: 150 }};
 
         navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
             const video = document.querySelector('video');
