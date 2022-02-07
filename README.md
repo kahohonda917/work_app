@@ -21,7 +21,7 @@
 # Usage
 - https://shiftapp2021.herokuapp.com/ にアクセス
 - デモユーザでログイン
-    - Mail : kaho1933@gmail.com
+    - Mail : shiftapp2021@gmail.com
     - Password : password
 - カレンダーのページは日付を押すとModalからシフトが記入できます。イベントを押すと、シフトを編集できます。
 - 右上からmonth/week/dayと画面を切り替えられます。
