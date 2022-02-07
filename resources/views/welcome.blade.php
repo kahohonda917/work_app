@@ -55,7 +55,7 @@
     祝日...10:00~21:00
     </div>
     <div class="col-6">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.7750553856513!2d139.75079221520113!3d35.70715273615745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c38bbf0efcd%3A0x19a5d8e06832fe53!2z44OV44Kj44OD44OI44ON44K544Kv44Op44OW5p2x5Lqs44OJ44O844Og!5e0!3m2!1sja!2sjp!4v1614687183741!5m2!1sja!2sjp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51876.92139547132!2d139.8709295546128!3d35.64479268282813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60187dbb4d2901d7%3A0x63ee51e3b365ddd3!2z5Y2D6JGJ55yM5rWm5a6J5biC!5e0!3m2!1sja!2sjp!4v1644202750777!5m2!1sja!2sjp" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
     </div>
     </div>
