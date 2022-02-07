@@ -17,6 +17,7 @@
 - Javascript
 - Bootstrap
 - Heroku
+- FullCalendar
 
 # Usage
 - https://shiftapp2021.herokuapp.com/ にアクセス
